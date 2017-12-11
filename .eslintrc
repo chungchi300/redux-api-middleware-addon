@@ -1,0 +1,28 @@
+{
+  "env": {
+    "browser": true
+  },
+  "parser": "babel-eslint",
+  "globals": {
+    "it": true,
+    "test": true,
+    "describe": true,
+    "expect": true,
+    "grecaptcha": true
+  },
+  "extends": [
+    "semistandard"
+  ],
+  "plugins": [
+    "class-property"
+  ],
+  "rules": {
+    "no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "args": "after-used"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+
+  "env": {
+    "development": {
+      "plugins": [
+        "transform-runtime",
+        "transform-async-to-generator",
+        "transform-object-rest-spread",
+        "transform-class-properties",
+      ],
+      "presets": [
+        ["es2015",{"modules":false}],
+        "react",
+        "stage-0"
+      ],
+    },
+    "test": {
+      "plugins": [
+        "transform-runtime",
+        "transform-async-to-generator",
+        "transform-object-rest-spread",
+        "transform-class-properties",
+      ],
+      "presets": [
+        "es2015",
+        "react",
+        "stage-0"
+      ],
+    }
+  }
+}
