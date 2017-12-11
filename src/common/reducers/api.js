@@ -1,4 +1,4 @@
-import SWAGGER from 'swagger.js';
+import SWAGGER from 'swagger.json';
 
 export default function api(state = SWAGGER, action) {
   switch (action.type) {

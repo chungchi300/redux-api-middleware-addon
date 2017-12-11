@@ -15,13 +15,13 @@ export default {
   format: 'iife',
   plugins: [
     includePaths(includePathOptions),
-
+    json(),
     babel({
       babelrc: true,
       exclude: 'node_modules/**',
       runtimeHelpers: true,
     }),
-    json(),
+
     cjs({
       sourceMap: false,
 
