@@ -1,21 +1,21 @@
 import URI from 'urijs';
 import { CALL_API } from 'redux-api-middleware';
-
+import { stringify } from 'query-string';
 import _ from 'lodash';
-import { subsituteUrl, formData } from 'helpers/api';
+import { subsituteUrl, formData, processType } from 'helpers/api';
 export function addSandWich() {
   return {
     type: 'ADD_SAND_WICH',
   };
 }
 
-export function request(pathName, { method, data, substitues }, types) {
+export function request(pathName, { method, data, subst }, types) {
   return async (dispatch, getState) => {
     const pathEntity = _.get(getState().api.paths, pathName);
     let realPath = pathName;
 
-    if (substitues) {
-      realPath = subsituteUrl(realPath, substitues);
+    if (subst) {
+      realPath = subsituteUrl(realPath, subst);
     }
 
     // //TODO Header should be create by Header constructor instead of plain object
@@ -30,21 +30,25 @@ export function request(pathName, { method, data, substitues }, types) {
       body = formData(data, headers['Content-Type']);
     }
 
-    console.log('endPoint', pathName, pathEntity, headers, realPath, body);
     if (headers['Content-Type'] === 'multipart/form-data') {
       delete headers['Content-Type'];
       delete headers['content-type'];
     }
     //
     const result = {
-      endpoint: 'http://10.6.64.19:8080' + realPath,
+      endpoint:
+        getState().api.protocol +
+        '://' +
+        getState().api.host +
+        getState().api.basePath +
+        realPath,
       method: method,
-      credentials: 'include',
+
       headers: headers,
       body: body,
-      types: types,
+      types: processType(types, pathName),
     };
-    console.log(result);
+
     return await dispatch({
       [CALL_API]: result,
     });
