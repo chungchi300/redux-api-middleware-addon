@@ -3,21 +3,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 // Import the components.
-import Shop from './component/Shop';
+
 import configureStore from './configureStore';
 // Define the root element.
 
 const root = document.querySelector('main');
-import { request } from 'actions';
+import * as Action from 'actions';
 import { BASIC, entity } from 'helpers/api';
+import PetList from './view/PetList';
 const store = configureStore();
-store.dispatch({
-  type: 'API:SET_PROTOCOL',
-  payload: 'https',
-});
+store.dispatch(Action.setProtocol('https'));
+store.dispatch(
+  Action.setHeaders({
+    'X-Token': 'base64TokenForApiCall',
+  })
+);
 store
   .dispatch(
-    request(
+    Action.request(
       '/pet/findByStatus',
       {
         method: 'get',
@@ -30,7 +33,7 @@ store
   .then(res => console.log(res));
 store
   .dispatch(
-    request(
+    Action.request(
       '/pet/findByStatus',
       {
         method: 'get',
@@ -44,7 +47,7 @@ store
 // Append the DummyComponent to the root element.
 ReactDOM.render(
   <Provider store={store}>
-    <Shop />
+    <PetList />
   </Provider>,
   root
 );

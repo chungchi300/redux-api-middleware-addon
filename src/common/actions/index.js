@@ -3,12 +3,20 @@ import { CALL_API } from 'redux-api-middleware';
 import { stringify } from 'query-string';
 import _ from 'lodash';
 import { subsituteUrl, formData, processType } from 'helpers/api';
-export function addSandWich() {
+export function setProtocol(protocol) {
   return {
-    type: 'ADD_SAND_WICH',
+    type: 'API:SET_PROTOCOL',
+    payload: protocol,
   };
 }
-
+export function setHeaders(headers) {
+  return {
+    type: 'API:SET_BASE_HEADERS',
+    payload: {
+      headers: headers,
+    },
+  };
+}
 export function request(pathName, { method, data, subst }, types) {
   return async (dispatch, getState) => {
     const pathEntity = _.get(getState().api.paths, pathName);
