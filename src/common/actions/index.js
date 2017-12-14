@@ -9,6 +9,12 @@ export function setProtocol(protocol) {
     payload: protocol,
   };
 }
+export function setSwagger(swagger) {
+  return {
+    type: 'API:SET_SWAGGER',
+    payload: swagger,
+  };
+}
 export function setHeaders(headers) {
   return {
     type: 'API:SET_BASE_HEADERS',

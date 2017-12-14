@@ -6,6 +6,7 @@ import replace from 'rollup-plugin-replace';
 import resolve from 'rollup-plugin-node-resolve';
 import includePaths from 'rollup-plugin-includepaths';
 import json from 'rollup-plugin-json';
+//future
 let includePathOptions = {
   paths: ['src/common'],
 };
@@ -15,7 +16,7 @@ export default {
   format: 'iife',
   plugins: [
     includePaths(includePathOptions),
-    json(),
+
     babel({
       babelrc: true,
       exclude: 'node_modules/**',
