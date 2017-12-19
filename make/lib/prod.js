@@ -16,6 +16,6 @@ config.external = external;
 config.plugins[3] = replace({
   'process.env.NODE_ENV': JSON.stringify('production'),
 });
-config.plugins.push(uglify());
+// config.plugins.push(uglify());
 
 export default config;
