@@ -22,6 +22,15 @@ export default {
     }),
     cjs({
       sourceMap: false,
+      namedExports: {
+        'node_modules/react/react.js': [
+          'Children',
+          'Component',
+          'PropTypes',
+          'cloneElement',
+          'createElement',
+        ],
+      },
     }),
     globals(),
     replace({ 'process.env.NODE_ENV': JSON.stringify('development') }),
