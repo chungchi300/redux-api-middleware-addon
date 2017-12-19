@@ -1,9 +1,10 @@
 {
-  "name": "rollup-babel-react-redux-lib-boilerplate",
+  "name": "redux-api-middleware-addon",
   "version": "1.0.0",
-  "title": "rollup-babel-react-redux-lib-boilerplate",
+  "title": "redux-api-middleware-addon",
   "main": "build/lib/index.min.js",
-  "description": "A opinioned boilerplate for develop react component(with styled-components) and redux action,reducer with proper development tools",
+  "description":
+    "A opinioned boilerplate for develop react component(with styled-components) and redux action,reducer with proper development tools",
   "keywords": [
     "Babel",
     "Browsersync",
@@ -13,7 +14,7 @@
     "Library",
     "Rollup"
   ],
-  "homepage": "https://github.com/chungchi300/rollup-babel-react-redux-lib-boilerplate",
+  "homepage": "https://github.com/chungchi300/redux-api-middleware-addon",
   "author": {
     "name": "Jeff Chung",
     "url": "https://github.com/chungchi300"
@@ -21,7 +22,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/chungchi300/rollup-babel-react-redux-lib-boilerplate"
+    "url": "https://github.com/chungchi300/redux-api-middleware-addon"
   },
   "engines": {
     "npm": ">=3.0.0",
@@ -91,7 +92,8 @@
     "localAppBuild:dev": "rollup -c make/app/dev.js",
     "prelocalAppStart": "rm -rf build/app/* && npm run localAppBuild:dev",
     "localAppStart": "npm-run-all --parallel localAppBuildWatch:dev browse",
-    "browse": "browser-sync start --s --index 'html/index-dev.html' --files 'html/**/*.html, build/**/*.js' --no-notify",
+    "browse":
+      "browser-sync start --s --index 'html/index-dev.html' --files 'html/**/*.html, build/**/*.js' --no-notify",
     "prebuild": "rm -rf build/lib/*",
     "build": "rollup -c make/lib/prod.js",
     "test": "jest",
@@ -101,9 +103,6 @@
     "postversion": "git push --tags origin HEAD"
   },
   "jest": {
-    "modulePaths": [
-      "./node_modules",
-      "./src/common"
-    ]
+    "modulePaths": ["./node_modules", "./src/common"]
   }
 }
