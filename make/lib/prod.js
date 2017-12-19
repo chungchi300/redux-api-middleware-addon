@@ -10,7 +10,7 @@ external = external.concat(Object.keys(pkg.peerDependencies));
 
 // Inject the production settings.
 config.external = external;
-config.entry = 'src/lib.js';
+config.entry = 'src/export/lib.js';
 config.dest = 'build/lib/index.min.js';
 config.format = 'cjs';
 config.plugins[3] = replace({
