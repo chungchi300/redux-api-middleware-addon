@@ -1,8 +1,8 @@
-import * as Action from 'actions';
-import * as Helper from 'helpers/api';
-import * as Reducer from 'reducers';
+import * as ApiAction from 'actions';
+import * as ApiHelper from 'helpers/api';
+import * as ApiReducer from 'reducers';
 export default {
-  Action,
-  Helper,
-  Reducer,
+  ApiAction,
+  ApiHelper,
+  ApiReducer,
 };
