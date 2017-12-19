@@ -5,12 +5,16 @@
       {
         "modules": false
       }
-    ],
-    "react"
+    ]
   ],
   "plugins": [
     "external-helpers",
     "transform-object-rest-spread",
     "transform-class-properties"
-  ]
+  ],
+  "env": {
+    "development": {
+      "presets": ["react"]
+    }
+  }
 }
