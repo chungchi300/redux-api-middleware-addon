@@ -15,7 +15,7 @@
 2. Generate Get Entity types
 
 //TODO
-Generate update,delete,create
+Generate update,delete,create which help network reducer record which api has api result that failed
 
 ### Reducer
 1. network (reducer,where is network result located)
