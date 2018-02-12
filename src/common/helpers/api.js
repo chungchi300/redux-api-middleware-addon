@@ -31,7 +31,7 @@ export function formData(dataMap, contentType) {
   } else if (contentType === 'application/json') {
     return JSON.stringify(dataMap);
   } else {
-    throw new Error('unknown contentType');
+    throw new Error('unknown contentType for ' + contentType);
   }
 }
 export function processType(types, pathName) {

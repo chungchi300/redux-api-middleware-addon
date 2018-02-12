@@ -5,7 +5,11 @@ import { Provider, connect } from 'react-redux';
 
 class PetList extends React.Component {
   render() {
-    let pets = this.props.pets.map(pet => <div key={pet.id}>{pet.name}</div>);
+    let pets = this.props.pets.map(pet => (
+      <div key={pet.id}>
+        {pet.id} - {pet.name}
+      </div>
+    ));
     return (
       <div>
         <div>Network:{this.props.network}</div>

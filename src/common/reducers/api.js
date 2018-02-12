@@ -1,4 +1,7 @@
-export default function api(state = { protocol: 'http', headers: {} }, action) {
+export default function api(
+  state = { protocol: 'http', contentType: '', headers: {} },
+  action
+) {
   switch (action.type) {
     case 'API:SET_BASE_HEADERS':
       return { ...state, headers: action.payload.headers };

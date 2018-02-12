@@ -9,6 +9,7 @@ export function setProtocol(protocol) {
     payload: protocol,
   };
 }
+
 export function setSwagger(swagger) {
   return {
     type: 'API:SET_SWAGGER',
