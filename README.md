@@ -1,3 +1,65 @@
+## Usuage
+```
+npm install redux-api-middleware-addon
+```
+
+## Code Usage
+```
+store.dispatch(Action.setProtocol('https'));
+
+store.dispatch(Action.setSwagger(SWAGGER));
+store.dispatch(
+  Action.setHeaders({
+    // 'X-Token': 'base64TokenForApiCall',
+    Accept: 'application/json',
+    ['Content-Type']: 'application/json',
+  })
+);
+store
+  .dispatch(
+    Action.request(
+      '/pet/findByStatus',
+      {
+        method: 'get',
+        data: { status: 'available' },
+        subst: null,
+      },
+      BASIC
+    )
+  )
+  .then(res => console.log(res));
+store
+  .dispatch(
+    Action.request(
+      '/pet',
+      {
+        method: 'post',
+        data: {
+          name: 'ronald',
+          id: 3,
+          photoUrls: [
+            'https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Letter_d.svg/1200px-Letter_d.svg.png',
+          ],
+        },
+      },
+      BASIC
+    )
+  )
+  .then(res => console.log(res));
+store
+  .dispatch(
+    Action.request(
+      '/pet/findByStatus',
+      {
+        method: 'get',
+        data: { status: 'available' },
+        subst: null,
+      },
+      entity('PETS_BY_ID')
+    )
+  )
+  .then(res => console.log(res));
+  ```
 
 ## Features
 1. Support file upload
