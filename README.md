@@ -1,6 +1,6 @@
 ## Usuage
 ```
-npm install redux-api-middleware-addon
+npm install redux-api-middleware-addon --save
 ```
 
 ## Code Usage
