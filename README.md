@@ -1,3 +1,8 @@
+## Features
+1. **Predictable and Ready-to-go api reducer to handle common network result for Rest API** ,E.g **Domain,Network,Api** Reducer
+2. Support **swagger.json**,**documentation as code**
+3. Support **file upload**
+
 ## Installation
 ```
 npm install redux-api-middleware-addon --save
@@ -68,12 +73,6 @@ store
   ```
 ### Result
 ![Result](http://jeff-chung.com/blog_accessary/blog_images/repo/redux-middleware-api-addon.png)
-
-
-## Features
-1. **Predictable and Ready to go api called process** ,Domain,Network,Api Reducer
-2. Support **swagger.json**,**documentation as code**
-3. Support **file upload**
 
 ## Components
 
