@@ -1,11 +1,13 @@
-## Usuage
+## Installation
 ```
 npm install redux-api-middleware-addon --save
 ```
-## Swagger definitions
+## Example
+
+### Swagger definitions
 https://github.com/chungchi300/redux-api-middleware-addon/blob/master/src/common/swagger.js
 
-## Code Usage
+### Code Usage
 ```
 import SWAGGER from 'swagger.js';
 
@@ -64,11 +66,16 @@ store
   )
   .then(res => console.log(res));
   ```
+### Result
+![Result](http://jeff-chung.com/blog_accessary/blog_images/repo/redux-middleware-api-addon.png)
+
 
 ## Features
-1. Support file upload
-2. Support swagger.json
-3. Domain reducer
+1. **Predictable and Ready to go api called process** ,Domain,Network,Api Reducer
+2. Support **swagger.json**,**documentation as code**
+3. Support **file upload**
+
+## Components
 
 ### Action
 1. SET_SWAGGER
