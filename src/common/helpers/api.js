@@ -1,5 +1,6 @@
 import FormData from 'form-data';
 import { stringify } from 'query-string';
+
 // ['REQUEST', 'SUCESS', 'FAILURE'];
 import _ from 'lodash';
 // mapById(['entity']);
@@ -34,7 +35,18 @@ export function formData(dataMap, contentType) {
     throw new Error('unknown contentType for ' + contentType);
   }
 }
-export function processType(types, pathName) {
+function getConventionalName(pathName, method) {
+  return (
+    method +
+    pathName
+      .replace(/\{.*\}/g, '')
+      .replace(/\/(.)/g, function($1) {
+        return $1.toUpperCase();
+      })
+      .replace(/\//g, '')
+  );
+}
+export function processType(types, pathName, method) {
   let originalTypes = _.cloneDeep(types);
   let processedTypes = [];
 
@@ -45,25 +57,31 @@ export function processType(types, pathName) {
       return originalType;
     }
   });
-
+  console.log('types', types);
   processedTypes[0] = {
     ...originalTypes[0],
     meta: {
-      source: pathName,
+      path: pathName,
+      name: getConventionalName(pathName, method),
+      method: method,
       ...originalTypes[0].meta,
     },
   };
   processedTypes[1] = {
     ...originalTypes[1],
     meta: {
-      source: pathName,
+      path: pathName,
+      name: getConventionalName(pathName, method),
+      method: method,
       ...originalTypes[1].meta,
     },
   };
   processedTypes[2] = {
     ...originalTypes[2],
     meta: {
-      source: pathName,
+      path: pathName,
+      name: getConventionalName(pathName, method),
+      method: method,
       ...originalTypes[2].meta,
     },
   };

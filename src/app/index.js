@@ -67,6 +67,19 @@ store
     )
   )
   .then(res => console.log(res));
+store
+  .dispatch(
+    Action.request(
+      '/pet/{id}',
+      {
+        method: 'get',
+        data: { status: 'available' },
+        subst: { id: 1 },
+      },
+      BASIC
+    )
+  )
+  .then(res => console.log(res));
 // Append the DummyComponent to the root element.
 ReactDOM.render(
   <Provider store={store}>

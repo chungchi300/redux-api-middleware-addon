@@ -148,7 +148,7 @@ export default {
         ],
       },
     },
-    '/pet/{petId}': {
+    '/pet/{id}': {
       get: {
         tags: ['pet'],
         summary: 'Find pet by ID',

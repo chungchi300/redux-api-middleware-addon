@@ -27,11 +27,12 @@ export function setHeaders(headers) {
 export function request(pathName, { method, data, subst }, types) {
   return async (dispatch, getState) => {
     const pathEntity = _.get(getState().api.paths, pathName);
-    let realPath = pathName;
 
+    let entityPath = pathName;
     if (subst) {
-      realPath = subsituteUrl(realPath, subst);
+      entityPath = subsituteUrl(pathName, subst);
     }
+    let realPath = entityPath;
 
     // //TODO Header should be create by Header constructor instead of plain object
     let headers = {
@@ -61,7 +62,7 @@ export function request(pathName, { method, data, subst }, types) {
 
       headers: headers,
       body: body,
-      types: processType(types, pathName),
+      types: processType(types, pathName, method),
     };
 
     return await dispatch({
