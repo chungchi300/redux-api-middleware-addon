@@ -40,7 +40,7 @@ export function request(pathName, { method, data, subst }, types) {
       ...pathEntity.headers,
     };
     let body;
-    if (method == 'get') {
+    if (method == 'get' && data) {
       realPath = realPath + '?' + stringify(data);
     } else {
       body = formData(data, headers['Content-Type']);
