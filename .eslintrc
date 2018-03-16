@@ -1,8 +1,13 @@
 {
-  "env": {
-    "browser": true
-  },
   "parser": "babel-eslint",
+  "plugins": [
+    "babel",
+    "prettier"
+  ],
+  "env": {
+    "browser": true,
+    "es6": true
+  },
   "globals": {
     "it": true,
     "test": true,
@@ -10,12 +15,13 @@
     "expect": true,
     "grecaptcha": true
   },
-  "extends": [
-    "semistandard"
-  ],
-  "plugins": [
-    "class-property"
-  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "modules": true
+    }
+  },
+  "root": true,
   "rules": {
     "no-unused-vars": [
       "warn",

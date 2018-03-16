@@ -1,12 +1,4 @@
 {
-  "plugins": [
-    "transform-object-rest-spread",
-    "transform-class-properties",
-    "transform-regenerator"
-  ],
-  "env": {
-    "development": {
-      "presets": ["react"]
-    }
-  }
+  "plugins": ["transform-runtime", "transform-object-rest-spread"],
+  "presets": ["env"]
 }
