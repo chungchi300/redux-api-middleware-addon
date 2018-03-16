@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "title": "redux-api-middleware-addon",
   "main": "lib/index.js",
-  "description":
-    "A opinioned boilerplate for develop react component(with styled-components) and redux action,reducer with proper development tools",
-  "keywords": ["Babel", "redux", "redux api middleware addon", "Library"],
+  "description": "A opinioned boilerplate for develop react component(with styled-components) and redux action,reducer with proper development tools",
+  "keywords": [
+    "Babel",
+    "redux",
+    "redux api middleware addon",
+    "Library"
+  ],
   "homepage": "https://github.com/chungchi300/redux-api-middleware-addon",
   "author": {
     "name": "Jeff Chung",
@@ -34,6 +38,7 @@
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.2",
     "babel-istanbul": "^0.12.2",
+    "babel-plugin-root-import": "^5.1.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "coveralls": "^3.0.0",
@@ -50,13 +55,15 @@
   "scripts": {
     "build": "babel src --out-dir lib",
     "clean": "rimraf lib coverage",
-    "cover":
-      "babel-node ./node_modules/.bin/babel-istanbul cover test/index.js | tap-spec",
+    "cover": "babel-node ./node_modules/.bin/babel-istanbul cover test/index.js | tap-spec",
     "lint": "eslint src test",
     "prepublish": "npm run lint && npm test && npm run clean && npm run build",
     "test": ""
   },
   "jest": {
-    "modulePaths": ["./node_modules", "./src/common"]
+    "modulePaths": [
+      "./node_modules",
+      "./src/common"
+    ]
   }
 }

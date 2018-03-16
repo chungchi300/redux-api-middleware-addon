@@ -2,7 +2,7 @@ import URI from 'urijs';
 import { CALL_API } from 'redux-api-middleware';
 import { stringify } from 'query-string';
 import _ from 'lodash';
-import { subsituteUrl, formData, processType } from 'helpers/api';
+import { subsituteUrl, formData, processType } from '~/helpers/api';
 export function setProtocol(protocol) {
   return {
     type: 'API:SET_PROTOCOL',
