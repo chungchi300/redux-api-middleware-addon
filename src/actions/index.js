@@ -24,8 +24,8 @@ export function setHeaders(headers) {
     },
   };
 }
-export async function request(pathName, { method, data, subst }, types) {
-  return async (dispatch, getState) => {
+export function request(pathName, { method, data, subst }, types) {
+  return (dispatch, getState) => {
     const pathEntity = _.get(getState().api.paths, pathName);
 
     let entityPath = pathName;
@@ -65,7 +65,7 @@ export async function request(pathName, { method, data, subst }, types) {
       types: processType(types, pathName, method),
     };
 
-    return await dispatch({
+    return dispatch({
       [CALL_API]: result,
     });
   };
