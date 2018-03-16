@@ -18,7 +18,7 @@ export default {
     babel({
       babelrc: true,
       exclude: 'node_modules/**',
-      runtimeHelpers: true,
+      runtimeHelpers: false,
       externalHelpers: false,
     }),
     cjs({
