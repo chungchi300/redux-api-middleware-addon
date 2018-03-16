@@ -13,9 +13,9 @@ config.external = external;
 config.entry = 'src/export/lib.js';
 config.dest = 'build/lib/index.min.js';
 config.format = 'cjs';
-config.plugins[3] = replace({
-  'process.env.NODE_ENV': JSON.stringify('production'),
-});
+// config.plugins[3] = replace({
+//   'process.env.NODE_ENV': JSON.stringify('production'),
+// });
 // config.plugins.push(uglify());
 
 export default config;

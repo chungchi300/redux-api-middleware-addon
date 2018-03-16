@@ -18,6 +18,8 @@ export default {
     babel({
       babelrc: true,
       exclude: 'node_modules/**',
+      runtimeHelpers: true,
+      externalHelpers: false,
     }),
     cjs({
       sourceMap: false,
