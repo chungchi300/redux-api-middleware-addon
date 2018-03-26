@@ -1,49 +1,55 @@
-import FormData from 'form-data';
-import { stringify } from 'query-string';
+import FormData from "form-data";
+import { stringify } from "query-string";
 
 // ['REQUEST', 'SUCESS', 'FAILURE'];
-import _ from 'lodash';
+import _ from "lodash";
 // mapById(['entity']);
 // defaultGuessing by name;
-export const BASIC = ['REQUEST', 'SUCCESS', 'FAILURE'];
+export const BASIC = ["REQUEST", "SUCCESS", "FAILURE"];
+export function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+export async function waitForAWhile() {
+  return await sleep(3000);
+}
 export function entity(name) {
   return [
-    'REQUEST',
+    "REQUEST",
     {
-      type: 'SUCCESS',
+      type: "SUCCESS",
       meta: { data: name },
       payload: (action, state, res) => {
         return res.json();
-      },
+      }
     },
-    'FAILURE',
+    "FAILURE"
   ];
 }
 export function formData(dataMap, contentType) {
   if (!dataMap) return null;
-  if (contentType === 'multipart/form-data') {
+  if (contentType === "multipart/form-data") {
     let formData = new FormData();
 
     Object.keys(dataMap).forEach(key => formData.append(key, dataMap[key]));
 
     return formData;
-  } else if (contentType === 'application/x-www-form-urlencoded') {
+  } else if (contentType === "application/x-www-form-urlencoded") {
     return stringify(dataMap);
-  } else if (contentType === 'application/json') {
+  } else if (contentType === "application/json") {
     return JSON.stringify(dataMap);
   } else {
-    throw new Error('unknown contentType for ' + contentType);
+    throw new Error("unknown contentType for " + contentType);
   }
 }
 function getConventionalName(pathName, method) {
   return (
     method +
     pathName
-      .replace(/\{.*\}/g, '')
+      .replace(/\{.*\}/g, "")
       .replace(/\/(.)/g, function($1) {
         return $1.toUpperCase();
       })
-      .replace(/\//g, '')
+      .replace(/\//g, "")
   );
 }
 export function processType(types, pathName, method) {
@@ -51,21 +57,21 @@ export function processType(types, pathName, method) {
   let processedTypes = [];
 
   originalTypes = originalTypes.map(originalType => {
-    if (typeof originalType == 'string') {
+    if (typeof originalType == "string") {
       return { type: originalType };
     } else {
       return originalType;
     }
   });
-  console.log('types', types);
+  console.log("types", types);
   processedTypes[0] = {
     ...originalTypes[0],
     meta: {
       path: pathName,
       name: getConventionalName(pathName, method),
       method: method,
-      ...originalTypes[0].meta,
-    },
+      ...originalTypes[0].meta
+    }
   };
   processedTypes[1] = {
     ...originalTypes[1],
@@ -73,8 +79,8 @@ export function processType(types, pathName, method) {
       path: pathName,
       name: getConventionalName(pathName, method),
       method: method,
-      ...originalTypes[1].meta,
-    },
+      ...originalTypes[1].meta
+    }
   };
   processedTypes[2] = {
     ...originalTypes[2],
@@ -82,8 +88,8 @@ export function processType(types, pathName, method) {
       path: pathName,
       name: getConventionalName(pathName, method),
       method: method,
-      ...originalTypes[2].meta,
-    },
+      ...originalTypes[2].meta
+    }
   };
 
   return processedTypes;
@@ -92,7 +98,7 @@ export function subsituteUrl(url, substitues) {
   let finalUrl = url;
 
   Object.keys(substitues).forEach((key, index) => {
-    finalUrl = finalUrl.replace('{' + key + '}', substitues[key]);
+    finalUrl = finalUrl.replace("{" + key + "}", substitues[key]);
   });
   return finalUrl;
 }
